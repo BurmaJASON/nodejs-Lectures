@@ -1,10 +1,7 @@
-const math = require('./math');
+// Nodjs watch mode
+// node --watch {fileName}
 
-// console.log(math.add(2,3));
-// console.log( math.subtract(3,2));
 
-const {add,subtract} = math;
+const data = require("./data.json")
 
-console.log(add(2,3));
-console.log(subtract(3,2));
-
+console.log(data.address.city);
