@@ -1,13 +1,13 @@
-module.exports.add = (a,b) => {
+const add = (a,b) => {
     return a + b;
 };//you can just use exports.add
 
 
-module.exports.subtract = (a,b) => {
+const subtract = (a,b) => {
     return a -b;
 }//you can just use exports.subtract
 
-// module.exports = {
-//     add ,
-//     subtract
-// };
+module.exports = {
+    add ,
+    subtract
+};
