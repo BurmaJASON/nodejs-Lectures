@@ -1,17 +1,31 @@
-const EventEmitter = require("node:events");
+const PizzaShop = require('./pizza-shop');
+const DrinkMachine = require('./drink-machine')
 
-const emitter = new EventEmitter();
+const pizzaShop = new PizzaShop;
+const drinkMachine = new DrinkMachine;
 
-emitter.on("order-pizza",(size,topping) => {
-    console.log(`Order received! Baking a ${size} pizza with ${topping}`);
-});
+pizzaShop.on("order", (size, topping) => {
+    console.log(`Order received! Banking a ${size} pizza with ${topping}`);
+    drinkMachine.serveDrink(size);
+})
 
-emitter.on("order-pizza", (size) => {
-    if(size == "large") {
-        console.log("Serving complimentary drink!");
-    }
-});
+pizzaShop.order("large", "mushrooms");
+pizzaShop.displayOrderNumber();
 
-console.log("Do work before event occurs in the system");
+// const EventEmitter = require("node:events");
 
-emitter.emit("order-pizza","large", "mushroom")
+// const emitter = new EventEmitter();
+
+// emitter.on("order-pizza",(size,topping) => {
+//     console.log(`Order received! Baking a ${size} pizza with ${topping}`);
+// });
+
+// emitter.on("order-pizza", (size) => {
+//     if(size == "large") {
+//         console.log("Serving complimentary drink!");
+//     }
+// });
+
+// console.log("Do work before event occurs in the system");
+
+// emitter.emit("order-pizza","large", "mushroom")
