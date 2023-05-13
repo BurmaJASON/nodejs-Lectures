@@ -1,10 +1,17 @@
-function greet(name) {
-    console.log(`Hello ${name}`);
-}
+const EventEmitter = require("node:events");
 
-function higherOrderFunction(callback) {
-    const name = "Saw Ye Htet";
-    callback(name);
-}
+const emitter = new EventEmitter();
 
-higherOrderFunction(greet);
+emitter.on("order-pizza",(size,topping) => {
+    console.log(`Order received! Baking a ${size} pizza with ${topping}`);
+});
+
+emitter.on("order-pizza", (size) => {
+    if(size == "large") {
+        console.log("Serving complimentary drink!");
+    }
+});
+
+console.log("Do work before event occurs in the system");
+
+emitter.emit("order-pizza","large", "mushroom")
