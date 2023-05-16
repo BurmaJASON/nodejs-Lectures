@@ -1,25 +1,11 @@
-const fs = require("node:fs");
-const zlib = require("node:zlib");
+const http = require("node:http");
 
-const gzip = zlib.createGzip();
-
-const readableStream = fs.createReadStream("./file.txt", {encoding: "utf-8",
-highWaterMark: 2});
-
-readableStream.pipe(gzip).pipe(fs.WriteStream("./file2.txt.gz"));
+const server = http.createServer((req, res) => {
+    res.writeHead(200,{"Content-Type" : "text/plain"});
+    res.end("Hello world!");
+})
 
 
-
-
-const writeableStream = fs.createWriteStream("./file2.txt");
-// Streams
-// readableStream.on("data", (chunk) => {
-//     console.log(chunk);
-//     writeableStream.write(chunk);
-// })
-
-
-// Pipes
-readableStream.pipe(writeableStream);
-
-
+server.listen(3000, () => {
+    console.log("Server is running on port 3000");
+})
