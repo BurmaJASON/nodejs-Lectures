@@ -3,11 +3,12 @@ const fs = require("node:fs");
 
 const server = http.createServer((req, res) => {
 
-
+    const name = "Burma";
     res.writeHead(200,{"Content-Type" : "text/html"});
-    fs.createReadStream(__dirname+"/index.html").pipe(res);
-    // const html = fs.readFileSync('./index.html',"utf-8");
-    // res.end(html);
+   
+    let html = fs.readFileSync('./index.html',"utf-8");
+    html = html.replace("{{name}}", name);
+    res.end(html);
 })
 
 
