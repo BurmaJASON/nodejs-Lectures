@@ -1,6 +1,6 @@
 const http = require("node:http")
-
 const fs = require("node:fs")
+const qs = require('querystring')
 
 http.createServer((req,res) => {
     const url = req.url;
@@ -9,7 +9,14 @@ http.createServer((req,res) => {
 
     //handle post method
     if(url == '/' && method=="POST") {
-        console.log('ok');
+        let data = '';
+        req.on('data', d => {
+            data += d;
+        })
+        
+        req.on('end',() => {
+            console.log(qs.parse(data));
+        })
     }
 
 
