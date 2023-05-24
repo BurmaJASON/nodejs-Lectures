@@ -4,6 +4,15 @@ const fs = require("node:fs")
 
 http.createServer((req,res) => {
     const url = req.url;
+    const method = req.method;
+
+
+    //handle post method
+    if(url == '/' && method=="POST") {
+        console.log('ok');
+    }
+
+
     if(url == "/") {
         fs.readFile('./page/index.html',(err,data)=> {
             res.write(data);
