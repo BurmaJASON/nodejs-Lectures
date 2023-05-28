@@ -1,2 +1,7 @@
 const people = ['yui', 'yoko', 'hama']
-module.exports = people
+const age = [12,13,44]
+
+module.exports = {
+    people,
+    age
+}
