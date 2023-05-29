@@ -14,19 +14,32 @@ const fs = require("node:fs")
 
 
 // writing files
-    // overwriting a file
-    fs.writeFile('./docs/blog1.txt', 'hello world', () => {
-        console.log('file is overwritten');
-    });
+    // // overwriting a file
+    // fs.writeFile('./docs/blog1.txt', 'hello world', () => {
+    //     console.log('file is overwritten');
+    // });
 
-    // writing a new file
-    fs.writeFile('./docs/blog2.txt', 'hello jason', () => {
-        console.log('file is created and written');
-    });
+    // // writing a new file
+    // fs.writeFile('./docs/blog2.txt', 'hello jason', () => {
+    //     console.log('file is created and written');
+    // });
 
 
 
 // directories
+    // if(!fs.existsSync('./assets')) {
+    //     // making directory 
+    //     fs.mkdir('./assets',(err) => {
+    //         if(err) console.log(err);
+    //         console.log('folder is created');
+    //     })
+    // }else {
+    //     // removing directory
+    //     fs.rmdir('./assets',(err) => {
+    //         if(err) console.log(err);
+    //         console.log('folder deleted');
+    //     });
+    // }
 
 
 
