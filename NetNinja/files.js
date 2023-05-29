@@ -45,3 +45,13 @@ const fs = require("node:fs")
 
 
 // deleting files
+    if(fs.existsSync('./docs/deleteme.txt')) {
+        fs.unlink('./docs/deleteme.txt',(err)=> {
+            if(err) console.log(err);
+            console.log('file deleted');
+        })
+    }else {
+        fs.writeFile('./docs/deleteme.txt',"hello deletemefile",()=> {
+            console.log('file created');
+        })
+    }
