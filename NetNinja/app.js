@@ -13,6 +13,9 @@ app.set('view engine', 'ejs');//if your render file is under views folder it wil
 // listen for requests
 app.listen(8000);
 
+// middleware and static files
+app.use(express.static('public'));
+
 app.use(morgan('dev'))
 // app.use(morgan('tiny'))
 
