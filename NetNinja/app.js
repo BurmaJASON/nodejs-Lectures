@@ -6,18 +6,24 @@ const app = express();
 
 // register view engine
 app.set('view engine', 'ejs');//if your render file is under views folder it will automatically render that file but its is under others u will need to config that file like below codes
-// app.set('views','myviews');
+// app.set('views','');
 
 
 // listen for requests
-app.listen(3000);
+app.listen(8000);
 
+app.use((req,res)=> {
+    console.log('new request made: ');
+    console.log('host: ', req.hostname);
+    console.log('path: ', req.path);
+    console.log('method: ', req.method);
+})
 
 app.get('/',(req,res) => {
     const blogs = [
-        {title: 'Yoshi finds eggs', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-        {title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit amet consectetur'},
-        {title: 'How to defeat browser', snippet: 'Lorem ipsum dolor sit amet consectetur'},
+        {title: 'Saw finds eggs', snippet: 'Lorem ipsum dolor sit  consectetur'},
+        {title: 'Mario finds stars', snippet: 'Lorem ipsum dolor sit  consectetur'},
+        {title: 'How to defeat browser', snippet: 'Lorem ipsum dolor sit  consectetur'},
     ];
     
     res.render('index', {title: 'Home', blogs });
