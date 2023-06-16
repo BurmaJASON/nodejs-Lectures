@@ -9,7 +9,6 @@ module.exports = {
                 return cb()
             })
             .catch(err => {
-                console.log(err);
                 return cb(err);
             })
     },
