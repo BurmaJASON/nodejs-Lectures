@@ -22,6 +22,7 @@ app.set('view engine', 'ejs');//if your render file is under views folder it wil
 
 // middleware and static files
 app.use(express.static('public'));
+app.use(express.urlencoded());
 app.use(morgan('dev'))
 // app.use(morgan('tiny'))
 
@@ -47,6 +48,15 @@ app.get('/blogs',(req,res) => {
             res.render('index', {title: 'All Blogs', blogs : result})
         })
         .catch(err => console.log(err))
+})
+
+app.post('/blogs',(req,res) => {
+    const blog = new Blog(req.body)
+    blog.save()
+        .then((result) => {
+             res.redirect('/blogs')
+        })
+        .catch((err) => console.log(err))
 })
 
 app.get('/blogs/create', (req,res) => {
